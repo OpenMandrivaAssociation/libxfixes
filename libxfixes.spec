@@ -52,7 +52,7 @@ fi
 %{_libdir}/libXfixes.la
 %{_libdir}/pkgconfig/xfixes.pc
 %{_includedir}/X11/extensions/Xfixes.h
-%{_mandir}/man3/Xfixes.3x.bz2
+%{_mandir}/man3/Xfixes.*
 
 #-----------------------------------------------------------
 
