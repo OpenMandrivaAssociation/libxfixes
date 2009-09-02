@@ -2,7 +2,7 @@
 Name: libxfixes
 Summary:  X Fixes  Library
 Version: 4.0.3
-Release: %mkrel 4
+Release: %mkrel 5
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
