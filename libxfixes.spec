@@ -1,7 +1,7 @@
 %define libxfixes %mklibname xfixes 3
 Name: libxfixes
 Summary:  X Fixes  Library
-Version: 4.0.4
+Version: 4.0.5
 Release: %mkrel 1
 Group: Development/X11
 License: MIT
