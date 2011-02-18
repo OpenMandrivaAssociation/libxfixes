@@ -1,8 +1,11 @@
-%define libxfixes %mklibname xfixes 3
+%define libname		%mklibname xfixes 3
+%define develname	%mklibname xfixes -d
+%define staticname	%mklibname xfixes -d -s
+
 Name: libxfixes
 Summary:  X Fixes  Library
 Version: 4.0.5
-Release: %mkrel 1
+Release: %mkrel 2
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -18,35 +21,37 @@ BuildRequires: x11-util-macros >= 1.0.1
 
 #-----------------------------------------------------------
 
-%package -n %{libxfixes}
+%package -n %{libname}
 Summary:  X Fixes  Library
 Group: Development/X11
 Conflicts: libxorg-x11 < 7.0
 Provides: %{name} = %{version}
 
-%description -n %{libxfixes}
+%description -n %{libname}
 %{name} is a simple library designed to interface the X Fixes Extension.
 
 #-----------------------------------------------------------
 
-%package -n %{libxfixes}-devel
+%package -n %{develname}
 Summary: Development files for %{name}
 Group: Development/X11
-Requires: %{libxfixes} = %{version}
+Requires: %{libname} = %{version}-%{release}
 Requires: x11-proto-devel >= 1.0.0
 Provides: libxfixes-devel = %{version}-%{release}
+Provides: libxfixes3-devel = %{version}-%{release}
+Obsoletes: %{mklibname fixes 3}-devel
 
 Conflicts: libxorg-x11-devel < 7.0
 
-%description -n %{libxfixes}-devel
+%description -n %{develname}
 Development files for %{name}
 
-%pre -n %{libxfixes}-devel
+%pre -n %{develname}
 if [ -h %{_includedir}/X11 ]; then
 	rm -f %{_includedir}/X11
 fi
 
-%files -n %{libxfixes}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_libdir}/libXfixes.so
 %{_libdir}/libXfixes.la
@@ -56,18 +61,20 @@ fi
 
 #-----------------------------------------------------------
 
-%package -n %{libxfixes}-static-devel
+%package -n %{staticname}
 Summary: Static development files for %{name}
 Group: Development/X11
-Requires: %{libxfixes}-devel = %{version}
+Requires: %{develname} = %{version}-%{release}
 Provides: libxfixes-static-devel = %{version}-%{release}
+Provides: libxfixes3-static-devel = %{version}-%{release}
+Obsoletes: %{mklibname fixes 3}-static-devel
 
 Conflicts: libxorg-x11-static-devel < 7.0
 
-%description -n %{libxfixes}-static-devel
+%description -n %{staticname}
 Static development files for %{name}
 
-%files -n %{libxfixes}-static-devel
+%files -n %{staticname}
 %defattr(-,root,root)
 %{_libdir}/libXfixes.a
 
@@ -96,9 +103,7 @@ rm -rf %{buildroot}
 %postun -p /sbin/ldconfig
 %endif
 
-%files -n %{libxfixes}
+%files -n %{libname}
 %defattr(-,root,root)
 %{_libdir}/libXfixes.so.3
 %{_libdir}/libXfixes.so.3.1.0
-
-
