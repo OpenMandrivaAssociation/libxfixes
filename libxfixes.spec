@@ -5,7 +5,7 @@
 Name: libxfixes
 Summary:  X Fixes  Library
 Version: 4.0.5
-Release: %mkrel 2
+Release: %mkrel 3
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -39,7 +39,7 @@ Requires: %{libname} = %{version}-%{release}
 Requires: x11-proto-devel >= 1.0.0
 Provides: libxfixes-devel = %{version}-%{release}
 Provides: libxfixes3-devel = %{version}-%{release}
-Obsoletes: %{mklibname fixes 3}-devel
+Obsoletes: %{mklibname xfixes 3}-devel
 
 Conflicts: libxorg-x11-devel < 7.0
 
@@ -67,7 +67,7 @@ Group: Development/X11
 Requires: %{develname} = %{version}-%{release}
 Provides: libxfixes-static-devel = %{version}-%{release}
 Provides: libxfixes3-static-devel = %{version}-%{release}
-Obsoletes: %{mklibname fixes 3}-static-devel
+Obsoletes: %{mklibname xfixes 3}-static-devel
 
 Conflicts: libxorg-x11-static-devel < 7.0
 
