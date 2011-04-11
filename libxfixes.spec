@@ -4,8 +4,8 @@
 
 Name: libxfixes
 Summary:  X Fixes  Library
-Version: 4.0.5
-Release: %mkrel 3
+Version: 5.0
+Release: %mkrel 1
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -105,5 +105,4 @@ rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
-%{_libdir}/libXfixes.so.3
-%{_libdir}/libXfixes.so.3.1.0
+%{_libdir}/libXfixes.so.%{major}*
