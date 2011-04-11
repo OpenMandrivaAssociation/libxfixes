@@ -1,4 +1,5 @@
-%define libname		%mklibname xfixes 3
+%define major	3
+%define libname		%mklibname xfixes %{major}
 %define develname	%mklibname xfixes -d
 %define staticname	%mklibname xfixes -d -s
 
@@ -13,7 +14,7 @@ Source0: http://xorg.freedesktop.org/releases/individual/lib/libXfixes-%{version
 BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libx11-devel >= 1.0.0
-BuildRequires: x11-proto-devel >= 1.0.0
+BuildRequires: x11-proto-devel >= 7.6-3
 BuildRequires: x11-util-macros >= 1.0.1
 
 %description
