@@ -1,17 +1,15 @@
 %define major	3
 %define libname		%mklibname xfixes %{major}
 %define develname	%mklibname xfixes -d
-%define staticname	%mklibname xfixes -d -s
 
 Name: libxfixes
 Summary:  X Fixes  Library
 Version: 5.0
-Release: %mkrel 1
+Release: 2
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXfixes-%{version}.tar.bz2
-BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libx11-devel >= 1.0.0
 BuildRequires: x11-proto-devel >= 7.6-3
@@ -19,8 +17,6 @@ BuildRequires: x11-util-macros >= 1.0.1
 
 %description
 %{name} is a simple library designed to interface the X Fixes Extension.
-
-#-----------------------------------------------------------
 
 %package -n %{libname}
 Summary:  X Fixes  Library
@@ -31,62 +27,26 @@ Provides: %{name} = %{version}
 %description -n %{libname}
 %{name} is a simple library designed to interface the X Fixes Extension.
 
-#-----------------------------------------------------------
-
 %package -n %{develname}
 Summary: Development files for %{name}
 Group: Development/X11
 Requires: %{libname} = %{version}-%{release}
-Requires: x11-proto-devel >= 1.0.0
 Provides: libxfixes-devel = %{version}-%{release}
-Provides: libxfixes3-devel = %{version}-%{release}
-Obsoletes: %{mklibname xfixes 3}-devel
-
+Obsoletes: %{_lib}xfixes3-devel
+Obsoletes: %{_lib}xfixes-static-devel
 Conflicts: libxorg-x11-devel < 7.0
 
 %description -n %{develname}
 Development files for %{name}
 
-%pre -n %{develname}
-if [ -h %{_includedir}/X11 ]; then
-	rm -f %{_includedir}/X11
-fi
-
-%files -n %{develname}
-%defattr(-,root,root)
-%{_libdir}/libXfixes.so
-%{_libdir}/libXfixes.la
-%{_libdir}/pkgconfig/xfixes.pc
-%{_includedir}/X11/extensions/Xfixes.h
-%{_mandir}/man3/Xfixes.*
-
-#-----------------------------------------------------------
-
-%package -n %{staticname}
-Summary: Static development files for %{name}
-Group: Development/X11
-Requires: %{develname} = %{version}-%{release}
-Provides: libxfixes-static-devel = %{version}-%{release}
-Provides: libxfixes3-static-devel = %{version}-%{release}
-Obsoletes: %{mklibname xfixes 3}-static-devel
-
-Conflicts: libxorg-x11-static-devel < 7.0
-
-%description -n %{staticname}
-Static development files for %{name}
-
-%files -n %{staticname}
-%defattr(-,root,root)
-%{_libdir}/libXfixes.a
-
-#-----------------------------------------------------------
-
 %prep
-%setup -q -n libXfixes-%{version}
+%setup -qn libXfixes-%{version}
 
 %build
-%configure2_5x	--x-includes=%{_includedir}\
-		--x-libraries=%{_libdir}
+%configure2_5x \
+	--disable-static \
+	--x-includes=%{_includedir} \
+	--x-libraries=%{_libdir}
 
 %make
 
@@ -94,16 +54,17 @@ Static development files for %{name}
 rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -p /sbin/ldconfig
-%endif
+%pre -n %{develname}
+if [ -h %{_includedir}/X11 ]; then
+	rm -f %{_includedir}/X11
+fi
 
 %files -n %{libname}
-%defattr(-,root,root)
 %{_libdir}/libXfixes.so.%{major}*
+
+%files -n %{develname}
+%{_libdir}/libXfixes.so
+%{_libdir}/pkgconfig/xfixes.pc
+%{_includedir}/X11/extensions/Xfixes.h
+%{_mandir}/man3/Xfixes.*
+
