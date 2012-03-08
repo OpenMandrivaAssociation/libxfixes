@@ -5,7 +5,7 @@
 Name: libxfixes
 Summary:  X Fixes  Library
 Version: 5.0
-Release: 2
+Release: 3
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -53,11 +53,6 @@ Development files for %{name}
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%pre -n %{develname}
-if [ -h %{_includedir}/X11 ]; then
-	rm -f %{_includedir}/X11
-fi
 
 %files -n %{libname}
 %{_libdir}/libXfixes.so.%{major}*
