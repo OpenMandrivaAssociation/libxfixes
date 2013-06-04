@@ -1,11 +1,11 @@
-%define major	3
-%define libname		%mklibname xfixes %{major}
-%define develname	%mklibname xfixes -d
+%define major 3
+%define libname %mklibname xfixes %{major}
+%define develname %mklibname xfixes -d
 
 Name:		libxfixes
 Summary:	X Fixes  Library
-Version:	5.0
-Release:	4
+Version:	5.0.1
+Release:	1
 Group:		Development/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
@@ -37,7 +37,7 @@ Obsoletes:	%{_lib}xfixes-static-devel < 5.0
 Conflicts:	libxorg-x11-devel < 7.0
 
 %description -n %{develname}
-Development files for %{name}
+Development files for %{name}.
 
 %prep
 %setup -qn libXfixes-%{version}
@@ -52,7 +52,6 @@ autoreconf -fi
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %files -n %{libname}
