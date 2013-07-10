@@ -12,8 +12,8 @@ Url:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXfixes-%{version}.tar.bz2
 
 BuildRequires:	pkgconfig(x11)
-BuildRequires:	pkgconfig(xorg-macros) >= 1.0.1
-BuildRequires:	pkgconfig(xproto) >= 7.6-3
+BuildRequires:	pkgconfig(xorg-macros)
+BuildRequires:	pkgconfig(xproto)
 
 %description
 %{name} is a simple library designed to interface the X Fixes Extension.
