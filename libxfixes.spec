@@ -5,7 +5,7 @@
 Summary:	X Fixes  Library
 Name:		libxfixes
 Version:	5.0.1
-Release:	9
+Release:	10
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
