@@ -4,8 +4,8 @@
 
 Summary:	X Fixes  Library
 Name:		libxfixes
-Version:	5.0.1
-Release:	12
+Version:	5.0.2
+Release:	1
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
@@ -37,10 +37,9 @@ Development files for %{name}.
 
 %prep
 %setup -qn libXfixes-%{version}
-#autoreconf -fi
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static \
 	--x-includes=%{_includedir} \
 	--x-libraries=%{_libdir}
@@ -58,4 +57,3 @@ Development files for %{name}.
 %{_libdir}/pkgconfig/xfixes.pc
 %{_includedir}/X11/extensions/Xfixes.h
 %{_mandir}/man3/Xfixes.*
-
