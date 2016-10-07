@@ -4,7 +4,7 @@
 
 Summary:	X Fixes  Library
 Name:		libxfixes
-Version:	5.0.2
+Version:	5.0.3
 Release:	1
 Group:		Development/X11
 License:	MIT
