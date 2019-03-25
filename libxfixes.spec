@@ -2,10 +2,12 @@
 %define libname %mklibname xfixes %{major}
 %define devname %mklibname xfixes -d
 
+%global optflags %{optflags} -O3
+
 Summary:	X Fixes  Library
 Name:		libxfixes
 Version:	5.0.3
-Release:	4
+Release:	5
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
@@ -36,7 +38,7 @@ Provides:	libxfixes-devel = %{version}-%{release}
 Development files for %{name}.
 
 %prep
-%setup -qn libXfixes-%{version}
+%autosetup -n libXfixes-%{version} -p1
 
 %build
 %configure \
@@ -44,10 +46,10 @@ Development files for %{name}.
 	--x-includes=%{_includedir} \
 	--x-libraries=%{_libdir}
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libXfixes.so.%{major}*
