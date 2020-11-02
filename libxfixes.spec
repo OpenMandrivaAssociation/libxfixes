@@ -30,6 +30,7 @@ BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	pkgconfig(xproto)
 %if %{with compat32}
 BuildRequires:	devel(libX11)
+BuildRequires:	devel(libxcb)
 %endif
 
 %description
