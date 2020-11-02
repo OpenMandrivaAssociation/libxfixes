@@ -31,6 +31,8 @@ BuildRequires:	pkgconfig(xproto)
 %if %{with compat32}
 BuildRequires:	devel(libX11)
 BuildRequires:	devel(libxcb)
+BuildRequires:	devel(libXau)
+BuildRequires:	devel(libXdmpc)
 %endif
 
 %description
