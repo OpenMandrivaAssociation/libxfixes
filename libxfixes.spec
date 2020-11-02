@@ -32,7 +32,7 @@ BuildRequires:	pkgconfig(xproto)
 BuildRequires:	devel(libX11)
 BuildRequires:	devel(libxcb)
 BuildRequires:	devel(libXau)
-BuildRequires:	devel(libXdmpc)
+BuildRequires:	devel(libXdmcp)
 %endif
 
 %description
