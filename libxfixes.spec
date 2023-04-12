@@ -18,17 +18,18 @@
 
 Summary:	X Fixes  Library
 Name:		libxfixes
-Version:	6.0.0
-Release:	2
+Version:	6.0.1
+Release:	1
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
-Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXfixes-%{version}.tar.bz2
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXfixes-%{version}.tar.xz
 
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	pkgconfig(xproto)
 %if %{with compat32}
+BuildRequires:	libc6
 BuildRequires:	devel(libX11)
 BuildRequires:	devel(libxcb)
 BuildRequires:	devel(libXau)
@@ -73,7 +74,7 @@ Development files for %{name}.
 
 %prep
 %autosetup -n libXfixes-%{version} -p1
-export CONFIGURE_TOP="`pwd`"
+export CONFIGURE_TOP="$(pwd)"
 %if %{with compat32}
 mkdir build32
 cd build32
@@ -103,7 +104,7 @@ cd build
 %{_libdir}/libXfixes.so
 %{_libdir}/pkgconfig/xfixes.pc
 %{_includedir}/X11/extensions/Xfixes.h
-%{_mandir}/man3/Xfixes.*
+%doc %{_mandir}/man3/Xfixes.*
 
 %if %{with compat32}
 %files -n %{lib32name}
