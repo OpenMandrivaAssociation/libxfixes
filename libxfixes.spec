@@ -18,7 +18,7 @@
 
 Summary:	X Fixes  Library
 Name:		libxfixes
-Version:	6.0.1
+Version:	6.0.2
 Release:	1
 Group:		Development/X11
 License:	MIT
